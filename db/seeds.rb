@@ -5,11 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+3.times do |topic|
+    Topic.create!(
+        title: "Topic #{topic}"
+    )
+end
+
+puts "3 Topics created"
 
 10.times do |blog|
     Blog.create!(
-        title: "My BLog Post #{blog}",
-        body: "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf"
+        title: "My Blog Post #{blog}",
+        body: "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf",
+        topic_id: Topic.last.id
     )
 end
 
@@ -24,10 +32,21 @@ end
 
 puts "5 skills created"
 
-9.times do |portfolio_item|
+8.times do |portfolio_item|
     Portfolio.create!(
         title: "Portfolio title: #{portfolio_item}",
-        subtitle: "My greate service",
+        subtitle: "Ruby on rails",
+        body: "asdfasdfasdfasdfasdfasdfadfasdfasdfasdfasdf",
+        main_image: "http://via.placeholder.com/600x400",
+        thumb_image: "http://via.placeholder.com/350x200" 
+        
+    )
+end
+
+1.times do |portfolio_item|
+    Portfolio.create!(
+        title: "Portfolio title: #{portfolio_item}",
+        subtitle: "Angular",
         body: "asdfasdfasdfasdfasdfasdfadfasdfasdfasdfasdf",
         main_image: "http://via.placeholder.com/600x400",
         thumb_image: "http://via.placeholder.com/350x200" 
@@ -36,3 +55,11 @@ puts "5 skills created"
 end
 
 puts "9 portfolio items created"
+
+3.times do |technology|
+    Portfolio.last.technologies.create!(
+        name: "Technology #{technology}",
+    )
+end
+
+puts "3 technologies created"
